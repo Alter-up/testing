@@ -33,7 +33,7 @@
             <a href="#" class="nav-link">Home</a>
             <a href="#features" class="nav-link">Features</a>
             <a href="#steps" class="nav-link">How It Works</a>
-            <button class="open"><span></span>Connect Wallet</button>
+            <button class="open"><span class="wallet-dot">Connect Wallet</button>
         </div>
     </nav>
 
@@ -158,72 +158,27 @@
     </div>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    const checkEligibilityBtn = document.getElementById('checkEligibility');
-    const notification = document.getElementById('notification');
-    const claimAmountElement = document.querySelector('.claim-amount .amount');
-    let walletConnected = false;
-    let isConnecting = false;
-
-    // Function to show notification
-    function showNotification() {
-        notification.classList.add('show');
-        setTimeout(() => {
-            notification.classList.remove('show');
-        }, 3000); // Hide after 3 seconds
-    }
-
-    // Check Eligibility button click handler
-    checkEligibilityBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (!walletConnected && !isConnecting) {
-            showNotification();
-        }
-    });
-
-    // Connect wallet button click handler
+  document.addEventListener('DOMContentLoaded', function() {
     const connectWalletBtn = document.querySelector('.open');
-    const navLinks = document.querySelector('.nav-links');
+    const claimAmountElement = document.querySelector('.claim-amount .amount');
+    let isProcessing = false;
 
+    // Connect Wallet button click handler
     connectWalletBtn.addEventListener('click', function() {
-        if (!isConnecting && !walletConnected) {
-            isConnecting = true;
-            this.innerHTML = '<span class="wallet-dot" style="background: #FFB800;"></span> Waiting for connection';
+        if (!isProcessing) {
+            isProcessing = true;
+            this.innerHTML = '<span class="wallet-dot" style="background: #FFB800;"></span> Processing...';
 
-            // Add "Click again to connect" message
-            const clickAgainMsg = document.createElement('div');
-            clickAgainMsg.className = 'click-again-message';
-            clickAgainMsg.textContent = 'Click again to connect';
-            navLinks.appendChild(clickAgainMsg);
-
-            // Remove the message after 3 seconds
+            // Simulate waiting for 10 seconds
             setTimeout(() => {
-                clickAgainMsg.remove();
-            }, 3000);
+                // Generate random amount between 100 and 5000
+                const randomAmount = (Math.random() * (5000 - 100) + 100).toFixed(2);
+                claimAmountElement.textContent = `${randomAmount} USDT`;
 
-            // Check for Ethereum wallet availability
-            if (typeof ethereum !== 'undefined') {
-                ethereum.request({ method: 'eth_requestAccounts' })
-                    .then(accounts => {
-                        walletConnected = true;
-                        isConnecting = false;
-                        connectWalletBtn.innerHTML = '<span class="wallet-dot" style="background: #27AE60;"></span> Wallet Connected';
-                        console.log('Wallet connected:', accounts);
-
-                        // Wait 10 seconds and update the claimable amount
-                        setTimeout(() => {
-                            const randomAmount = (Math.random() * (5000 - 100) + 100).toFixed(2); // Random number between 100 and 5000
-                            claimAmountElement.textContent = `${randomAmount} USDT`;
-                        }, 10000); // 10 seconds delay
-                    })
-                    .catch(error => {
-                        isConnecting = false;
-                        console.error('Error connecting wallet:', error);
-                    });
-            } else {
-                alert('Ethereum wallet is not available');
-                isConnecting = false;
-            }
+                // Update button to indicate completion
+                this.innerHTML = '<span class="wallet-dot" style="background: #27AE60;"></span> Wallet Connected';
+                isProcessing = false;
+            }, 10000); // 10 seconds delay
         }
     });
 });
