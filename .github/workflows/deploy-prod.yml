@@ -17,6 +17,6 @@ jobs:
       # - run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          firebaseServiceAccount: "${{ secrets.1//09vF0SD916SCnCgYIARAAGAkSNwF-L9Irk0f0ZNNYdE055qCueqX8P37-a6f3Lie59y08fWA2PccfBv3A38La0nDlCh0FQy7tHew }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
           projectId: your-Firebase-project-ID
           channelId: live
