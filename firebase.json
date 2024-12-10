@@ -22,10 +22,4 @@
     "source": "dataconnect"
   }
 }
-"hosting": {
-  // ... other hosting settings
-  "github": {
-    "repo": "Alter-up/testing",
-    "branch": "main" // or specify your desired branch
-  }
-}
+
