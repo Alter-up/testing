@@ -1,0 +1,22 @@
+name: Deploy to Live Channel
+
+on:
+  push:
+    branches:
+      - main
+    # Optionally configure to run only for specific files. For example:
+    # paths:
+    # - "website/**"
+
+jobs:
+  deploy_live_website:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Add any build steps here. For example:
+      # - run: npm ci && npm run build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          firebaseServiceAccount: "${{ secrets.1//09vF0SD916SCnCgYIARAAGAkSNwF-L9Irk0f0ZNNYdE055qCueqX8P37-a6f3Lie59y08fWA2PccfBv3A38La0nDlCh0FQy7tHew }}"
+          projectId: your-Firebase-project-ID
+          channelId: live
